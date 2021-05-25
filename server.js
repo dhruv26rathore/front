@@ -88,15 +88,15 @@ app.use((req, res, next) => {
     next(error);
 })
 
-//Error handler function
-// app.use((error, req, res, next) => {
-//     res.status(error.status || 500);
-//     res.json({
-//         error: {
-//             message: error.message
-//         }
-//     })
-// })
+Error handler function
+app.use((error, req, res, next) => {
+    res.status(error.status || 500);
+    res.json({
+        error: {
+            message: error.message
+        }
+    })
+})
 
 if(process.env.NODE_ENV == "production"){
     app.use(express.static("client/build"));
